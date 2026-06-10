@@ -8,25 +8,23 @@
    - ẢNH TẠO RA PHẢI CHUẨN XÁC VỀ THÔNG TIN: đúng với TÊN SẢN PHẨM, đúng MÀU SẮC, và đúng LOẠI SẢN PHẨM mô tả. Không được dùng 1 ảnh cho nhiều sản phẩm khác nhau.
    - **LƯU Ý VỀ DUNG LƯỢNG (MỚI)**: Khi dùng AI sinh ảnh, KHÔNG CẦN SINH ẢNH CHẤT LƯỢNG CAO (High Quality). Chỉ cần ảnh đủ rõ để người dùng nhận diện được sản phẩm là gì. Mục đích là để tiết kiệm dung lượng, tránh làm nặng thư mục project.
    - **Ảnh Product Detail (MỚI)**: Tại trang chi tiết sản phẩm, MỖI SẢN PHẨM cần có tối thiểu 3 ảnh khác nhau (các góc độ khác nhau hoặc có ma nơ canh). Khi quota AI phục hồi, cần generate đủ 3 ảnh cho mỗi sản phẩm để PageView hiển thị.
+
 ## Current Status
-- **Date**: 2026-06-09
-- **Phase**: Favorites UI Re-implementation & Backend Integration Fixes
-- **State**: The Favorites Screen UI (`favorites_screen.dart`) is now perfectly synced with `Lists.png` and `Favorites - Modules` design. Bug fixes applied to Favorites API logic. `flutter analyze` shows NO ISSUES.
+- **Date**: 2026-06-10
+- **Phase**: Project Restructuring & Git Deployment
+- **State**: Project is completely restructured into exactly two root directories: `frontend` and `backend`. All documentation files are now inside `backend/`. Git is initialized and successfully pushed. Local git config (`.git/info/exclude`) is handling the gitignores so the project root doesn't contain hidden `.gitignore` files. App source code in `frontend` is clean of the 1.6GB `build` artifacts.
 
-## Changes Made Today (2026-06-09)
-- **Backend & Logic Fixes**:
-  - Fixed `Add to Favorites` failure (HTTP 403) by correcting token lookup key in `favorite_service.dart` from `auth_token` to `jwt_token`.
-  - Fixed HTTP 404 Image load errors by updating `FavoriteService.java` to not append `baseUrl` to `assets/...` image paths, and added logic in `favorites_screen.dart` to conditionally use `Image.network` or `Image.asset`.
-- **UI Perfecting (Favorites Screen)**:
-  - Reconstructed `_buildListView` to precisely match the target design `Lists.png`: 
-    - Added large left-aligned "Favorites" title below standard AppBar.
-    - Rendered `discountTag` (-30% red pill) and `isNewBadge` (NEW black pill) overlapping the product image.
-    - Fine-tuned Star rating alignment to match design.
-    - Added the red shopping bag icon to the bottom right of the list card, ensuring `Stack` is wrapped in `Padding` so it overlaps the card border without clipping into the next list item.
-  - Ensured that `isGridView` properly switches the AppBar header layout (centered small title vs large left-aligned title).
-  - Maintained strict self-review loop to ensure 100% pixel-perfect adherence to the user's provided `Lists.png`.
+## Changes Made Today (2026-06-10)
+- **Project Structure**:
+  - Restructured the root directory to only contain `frontend` and `backend`.
+  - Moved Spring Boot files, Python scripts, and Markdown documentations (`CHANGELOG_TODAY.md`, `PROJECT_RULES.md`, `HELP.md`) into `backend/`.
+  - Copied Flutter source files to `frontend/`, deliberately leaving behind the bulky `build/` directory to save 1.6GB of space.
+- **Git & GitHub Optimization**:
+  - Copied `.gitignore` rules directly into `.git/info/exclude`.
+  - Deleted `.gitignore` and `.gitattributes` from the root directory so the GitHub repo looks perfectly clean with strictly two folders.
+  - Successfully committed and pushed the source code.
 
-## Next Steps (Nhiệm vụ cho ngày mai)
+## Next Steps (Nhiệm vụ tiếp theo)
 - **Hoàn thiện dữ liệu DataSeeder cho mục Shop > Women > New**:
   - Ghi chú quan trọng: Danh mục "Tops" ở đây mang ý nghĩa là "Top sản phẩm bán chạy" (Bestsellers) chứ không chỉ đơn thuần là "áo".
   - Nhiệm vụ 1: Bổ sung thêm dữ liệu sản phẩm cho các tab đang bị trống (Knitwear, Blazers, Pants, Jeans, Shorts, Skirts...).

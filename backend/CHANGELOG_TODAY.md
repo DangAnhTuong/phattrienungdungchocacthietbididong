@@ -71,3 +71,16 @@
   - Sửa lỗi hiển thị thanh công cụ cuộn (SliverAppBar).
   - Tích hợp `LayoutBuilder` bao quanh `FlexibleSpaceBar` để tự động tính toán chiều cao cuộn trang.
   - Giữ nguyên thiết kế tiêu đề "Rating&Reviews" ở góc trái khi bung rộng, và tự động chuyển sang căn giữa trang (center) cực mượt khi thu nhỏ thanh cuộn lại.
+
+---
+*Ngày: 10/06/2026*
+
+## 7. Cấu trúc lại dự án & Đẩy lên GitHub
+- **Quy hoạch cấu trúc thư mục**: 
+  - Tách hoàn toàn dự án thành 2 thư mục chính: `frontend` và `backend` theo đúng yêu cầu cấu trúc chuẩn.
+  - Di chuyển toàn bộ code Spring Boot, cấu hình Maven, và các script Python, cùng với tài liệu dự án (`docs/`, `CHANGELOG_TODAY.md`, `PROJECT_RULES.md`, `HELP.md`) vào thư mục `backend`.
+  - Copy toàn bộ mã nguồn Flutter sang thư mục `frontend` (loại bỏ file build rác).
+- **Tối ưu hóa Git & Không gian lưu trữ**:
+  - Cấu hình bỏ qua thư mục `build` (nặng 1.6GB) của Flutter để tránh làm phình to dung lượng repo GitHub.
+  - Sử dụng cấu hình Git nâng cao (`.git/info/exclude`) để chặn rác cục bộ, giúp thư mục gốc (root) hoàn toàn sạch sẽ, KHÔNG hiển thị file `.gitignore` hay `.gitattributes` trên GitHub.
+- **GitHub Push**: Đã khởi tạo Git, commit và push thành công dự án lên GitHub với cấu trúc gọn gàng, tối ưu nhất.
